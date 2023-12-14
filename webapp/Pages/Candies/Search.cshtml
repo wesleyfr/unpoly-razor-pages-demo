@@ -1,0 +1,28 @@
+﻿@page
+@model SearchModel
+@{
+    ViewData["Title"] = "Candies bag";
+}
+
+<div class="text-center">
+    <form method="get" asp-fragment="candies">
+        <input asp-for="SearchText" autofocus autocomplete="off" placeholder="Search" style="display: inline;" />
+        <button type="submit">Search</button>
+    </form>
+    <p id="candies">Found @Model.NbSearchResult candies</p>
+    <div class="flex-container candy-search">
+        @foreach (var candy in Model.CandiesSearchResult)
+        {
+            <div class="candy">
+                <img src="@Url.Content("~/img/" + candy.ImageFilename)" alt="image of candy"/>
+                <a asp-page="/Candy/Details" asp-route-candyid="@candy.Id">
+                    <div class="candy-name">@candy.Name</div>
+                </a>
+            </div>
+        }
+    </div>
+    <div class="flex-container next-previous">
+        <a asp-page="/Candies/Search" asp-route-pagenumber="@Model.PreviousPageNumber" asp-route-searchtext="@Model.SearchText" asp-fragment="candies">Previous page</a>
+        <a asp-page="/Candies/Search" asp-route-pagenumber="@Model.NextPageNumber" asp-route-searchtext="@Model.SearchText" asp-fragment="candies">Next page</a>
+    </div>
+</div>

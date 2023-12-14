@@ -1,0 +1,62 @@
+﻿@using webapp.Models
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - webapp</title>
+    
+    <link rel="stylesheet" href="~/css/water.css" />
+    <link rel="stylesheet" href="~/css/snackbar.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/webapp.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+<!-- Main Content -->
+<main>
+
+    <!-- Header -->
+    <header class="header">
+        <p class="candies-events">
+            <a asp-page="/Candies/Events">📨 @CandiesRepository.GetUnreadEventsCount() event(s)</a>
+        </p>
+        <h1>Halloween candies 🎃</h1>
+        <p>
+            Collect and eat Halloween candies
+        </p>
+    </header>
+
+    <div class="flex-container-layout wrapper">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="flex-container-nav">
+                <a is-active-page asp-area="" asp-page="/Candies/Search">All candies</a>  
+                <a is-active-page asp-area="" asp-page="/Candy/Add">Add a candy</a>  
+                <a is-active-page asp-area="" asp-page="/Privacy">Privacy</a>
+                <a is-active-page asp-area="" asp-page="/BrokenPage">Broken page</a>
+            </nav>
+        </aside>
+
+        <!-- Content -->
+        <section class="content">
+            @RenderBody()
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2023 - Halloween candies
+        <p>Halloween foods asset credit to <a href="https://jackalune.itch.io/halloween-foods-asset-pack-free">jackalune</a></p>
+    </footer>
+    <div id="snackbar">Page was reloaded 😡</div> 
+</main>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

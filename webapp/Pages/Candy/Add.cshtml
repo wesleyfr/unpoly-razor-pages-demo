@@ -1,0 +1,34 @@
+﻿@page
+@model AddModel
+@{
+    ViewData["Title"] = "Add a candy";
+}
+
+<div class="text-center">
+    <h3>Add a candy</h3>
+    <form method="post" id="add-candy-form" asp-fragment="add-candy-form">
+        <fieldset>
+            <label asp-for="CandyName">Candy name</label>
+            <input asp-for="CandyName" autofocus />
+            <span asp-validation-for="CandyName"></span>
+        </fieldset>
+        <fieldset>
+            <label asp-for="ExpirationDate">Expiration date</label>
+            <input type="date" asp-for="ExpirationDate"/>
+            <span asp-validation-for="ExpirationDate"></span>
+        </fieldset>
+        <fieldset>
+            <label asp-for="HasSpecialNote">Has special note ?</label>
+            <input asp-for="HasSpecialNote"/>
+            <span asp-validation-for="HasSpecialNote"></span>
+        </fieldset>
+        <fieldset>
+            <label asp-for="SpecialNote">Special note</label>
+            <input asp-for="SpecialNote"/>
+            <span asp-validation-for="SpecialNote"></span>
+        </fieldset>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+﻿@page "{candyId}"
+@model CommentsModel
+@{
+    ViewData["Title"] = "Candy comments";
+    Guard.IsNotNull(Model.Candy);
+}
+
+<div class="text-center">
+    <h2>@Model.Candy.Name candy</h2>
+    
+    <div class="tabs">
+        <ul>
+            <li><a asp-page="/Candy/Details" asp-route-candyid="@Model.Candy.Id">Candy information</a></li>
+            <li class="is-active"><a asp-page="/Candy/Comments" asp-route-candyid="@Model.Candy.Id">Comments</a></li>
+        </ul>
+    </div>
+    @foreach (var comment in Model.Candy.Comments)
+    {
+        <blockquote>@comment</blockquote>
+    }
+    <div id="end-of-comments"></div>
+    <form method="post" asp-fragment="end-of-comments">
+        <div asp-validation-summary="All"><span>Error while adding a comment</span></div>
+        <input asp-for="Comment" />
+        <input asp-for="CandyId" type="hidden" />
+        <button type="submit">Add new comment</button>
+    </form>
+
+</div>

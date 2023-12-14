@@ -1,0 +1,44 @@
+﻿@page "{candyId}"
+@model DetailsModel
+@{
+    ViewData["Title"] = "Candy details";
+    Guard.IsNotNull(Model.Candy);
+}
+
+<div class="text-center">
+    <h2>@Model.Candy.Name candy</h2>
+    
+    <div class="tabs">
+      <ul>
+        <li class="is-active"><a asp-page="/Candy/Details" asp-route-candyid="@Model.Candy.Id">Candy information</a></li>
+        <li><a asp-page="/Candy/Comments" asp-route-candyid="@Model.Candy.Id">Comments</a></li>
+      </ul>
+    </div>
+    
+    <img src="@Url.Content("~/img/" + @Model.Candy.ImageFilename)" alt="@Model.Candy.Name"/>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>@Model.Candy.Name</td>
+        </tr>
+        <tr>
+            <td>Expiration date</td>
+            <td>@Model.Candy.ExpirationDate</td>
+        </tr>
+        <tr>
+            <td>Has special note?</td>
+            <td>@(Model.Candy.HasSpecialNote ? "yes" : "no")</td>
+        </tr>
+        @if (Model.Candy.HasSpecialNote)
+        {
+            <tr>
+                <td>Special note</td>
+                <td>@Model.Candy.SpecialNote</td>
+            </tr>
+        }
+    </table>
+    <form method="post">
+        <div asp-validation-summary="All"><span>Error while deleting the candy</span></div>
+        <button type="submit">Delete this candy</button>
+    </form>
+</div>

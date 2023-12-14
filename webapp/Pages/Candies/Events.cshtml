@@ -1,0 +1,34 @@
+@page
+@using webapp.Models
+@model EventsModel
+
+@{
+    ViewData["Title"] = "Candies events";
+}
+<h3>Events</h3>
+
+<form method="post">
+    <button type="submit">Mark all as read</button>
+</form>
+
+<table>
+@foreach (var evt in @CandiesRepository.GetEvents())
+{
+    <tr>
+        @if (evt.IsRead)
+        {
+            <th></th>
+            <th>@evt.Date.ToString("hh:mm:ss")</th>
+            <th>@evt.Message</th>
+        }
+        else
+        {
+            <th>✉️</th>
+            <th><em>@evt.Date.ToString("hh:mm:ss")</em></th>
+            <th><em>@evt.Message</em></th>
+        }
+    </tr>   
+}
+ 
+</table>
+

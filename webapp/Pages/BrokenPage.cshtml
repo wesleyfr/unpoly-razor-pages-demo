@@ -1,0 +1,10 @@
+﻿@page
+@{
+    ViewData["Title"] = "Broken page";
+}
+<h2>@ViewData["Title"]</h2>
+
+<p>This page will throw an exception</p>
+@{
+    throw new ApplicationException("An error as occured in the Broken Page");
+}
