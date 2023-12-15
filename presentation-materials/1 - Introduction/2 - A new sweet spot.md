@@ -1,16 +1,16 @@
 
 # Server side Webapp : Razor pages
 
-> Great developper experience
+> Great developer experience
 
-- No JS/angular/react skillset needed
+- No JS/angular/react skill set needed
 - One IDE for FE (html+css) and BE (c#)
 - Debugging between FE and BE simplified
 - Less models, less validations
 - One security model
 - better security awareness: ~ what you show is what you leak
-- [css isolation](https://www.mikesdotnetting.com/article/355/css-isolation-in-razor-pages) (**DEMO**)
-- Model binded to html (IDE navigation, compilation check) (**DEMO**)
+- [css isolation](https://www.mikesdotnetting.com/article/355/css-isolation-in-razor-pages) (**DEMO** `Search.cshtml.css`)
+- Model binded to html (IDE navigation, compilation check) (**DEMO** `Add.cshtml`)
 - hot-reload included for BE and FE (**DEMO**)
 
 **Demo website**

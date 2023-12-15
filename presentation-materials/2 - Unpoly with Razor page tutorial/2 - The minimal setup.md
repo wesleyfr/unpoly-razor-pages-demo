@@ -75,21 +75,12 @@ Remove custom attributes in `Add.cshtml`:
 <form method="post" id="add-candy-form" asp-fragment="add-candy-form"> 
 ```
 
-Add file `UnpolyAnchorTagHelper`:
+`UnpolyAnchorTagHelper`:
 ```cs
-using Microsoft.AspNetCore.Mvc.TagHelpers;  
-using Microsoft.AspNetCore.Mvc.ViewFeatures;  
-using Microsoft.AspNetCore.Razor.TagHelpers;  
-  
-namespace webapp.TagHelpers;  
-  
 [HtmlTargetElement("a")]  
 public class UnpolyAnchorTagHelper : AnchorTagHelper  
 {  
-    public UnpolyAnchorTagHelper(IHtmlGenerator generator)  
-        : base(generator)  
-    {    }  
-    
+...
     public override void Process(
 	    TagHelperContext context, 
 	    TagHelperOutput output)  
@@ -106,21 +97,12 @@ public class UnpolyAnchorTagHelper : AnchorTagHelper
 }
 ```
 
-Add file `UnpolyFormTagHelper`:
+`UnpolyFormTagHelper`:
 ```cs
-using Microsoft.AspNetCore.Mvc.TagHelpers;  
-using Microsoft.AspNetCore.Mvc.ViewFeatures;  
-using Microsoft.AspNetCore.Razor.TagHelpers;  
-  
-namespace webapp.TagHelpers;  
-  
 [HtmlTargetElement("form")]  
 public class UnpolyFormTagHelper : FormTagHelper  
 {  
-    public UnpolyFormTagHelper(IHtmlGenerator generator)  
-        : base(generator)  
-    {    }  
-    
+...
     public override void Process(
 	    TagHelperContext context, 
 	    TagHelperOutput output)  
