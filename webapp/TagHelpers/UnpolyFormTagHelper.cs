@@ -14,5 +14,17 @@
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            output.Attributes.Add(new TagHelperAttribute(  
+                "up-submit",   
+                null,  
+                HtmlAttributeValueStyle.Minimized));  
+            output.Attributes.Add(new TagHelperAttribute(  
+                "up-disable",   
+                "button",   
+                HtmlAttributeValueStyle.DoubleQuotes));
+            output.Attributes.Add(new TagHelperAttribute(  
+                "up-scroll",   
+                "false",   
+                HtmlAttributeValueStyle.DoubleQuotes));
         }
     }

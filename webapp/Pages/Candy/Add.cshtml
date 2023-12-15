@@ -19,10 +19,10 @@
         </fieldset>
         <fieldset>
             <label asp-for="HasSpecialNote">Has special note ?</label>
-            <input asp-for="HasSpecialNote"/>
+            <input asp-for="HasSpecialNote" up-switch=".has-special-note-field"/>  
             <span asp-validation-for="HasSpecialNote"></span>
         </fieldset>
-        <fieldset>
+        <fieldset class="has-special-note-field" up-show-for="true">
             <label asp-for="SpecialNote">Special note</label>
             <input asp-for="SpecialNote"/>
             <span asp-validation-for="SpecialNote"></span>

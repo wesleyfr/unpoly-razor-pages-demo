@@ -5,24 +5,27 @@
 }
 
 <div class="text-center">
-    <form method="get" asp-fragment="candies">
-        <input asp-for="SearchText" autofocus autocomplete="off" placeholder="Search" style="display: inline;" />
+    <form method="get" asp-fragment="candies" up-target=".candy-search" up-focus="input" up-watch-disable="button">
+        <input asp-for="SearchText" autofocus autocomplete="off" placeholder="Search" style="display: inline;" 
+               up-autosubmit up-watch-delay="100" />
         <button type="submit">Search</button>
     </form>
-    <p id="candies">Found @Model.NbSearchResult candies</p>
+    <p id="candies" up-hungry>Found @Model.NbSearchResult candies</p>
     <div class="flex-container candy-search">
         @foreach (var candy in Model.CandiesSearchResult)
         {
             <div class="candy">
                 <img src="@Url.Content("~/img/" + candy.ImageFilename)" alt="image of candy"/>
-                <a asp-page="/Candy/Details" asp-route-candyid="@candy.Id">
+                <a asp-page="/Candy/Details" asp-route-candyid="@candy.Id" up-layer="new">
                     <div class="candy-name">@candy.Name</div>
                 </a>
             </div>
         }
     </div>
-    <div class="flex-container next-previous">
-        <a asp-page="/Candies/Search" asp-route-pagenumber="@Model.PreviousPageNumber" asp-route-searchtext="@Model.SearchText" asp-fragment="candies">Previous page</a>
-        <a asp-page="/Candies/Search" asp-route-pagenumber="@Model.NextPageNumber" asp-route-searchtext="@Model.SearchText" asp-fragment="candies">Next page</a>
+    <div class="flex-container next-previous" up-hungry>
+        <a asp-page="/Candies/Search" asp-route-pagenumber="@Model.PreviousPageNumber" asp-route-searchtext="@Model.SearchText" asp-fragment="candies"
+           up-transition="move-right" up-target=".candy-search">Previous page</a>
+        <a asp-page="/Candies/Search" asp-route-pagenumber="@Model.NextPageNumber" asp-route-searchtext="@Model.SearchText" asp-fragment="candies"
+           up-transition="move-left" up-target=".candy-search">Next page</a>
     </div>
 </div>

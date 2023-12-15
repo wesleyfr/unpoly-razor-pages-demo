@@ -8,6 +8,8 @@
     
     <link rel="stylesheet" href="~/css/water.css" />
     <link rel="stylesheet" href="~/css/snackbar.css" />
+    <link rel="stylesheet" href="~/lib/air-datepicker/air-datepicker.css" />
+    <link rel="stylesheet" href="~/lib/unpoly/unpoly.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/webapp.styles.css" asp-append-version="true" />
 </head>
@@ -18,7 +20,7 @@
 
     <!-- Header -->
     <header class="header">
-        <p class="candies-events">
+        <p class="candies-events" up-hungry up-poll up-interval="10000">
             <a asp-page="/Candies/Events">📨 @CandiesRepository.GetUnreadEventsCount() event(s)</a>
         </p>
         <h1>Halloween candies 🎃</h1>
@@ -31,16 +33,16 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-            <nav class="flex-container-nav">
+            <nav class="flex-container-nav navigation-menu" up-hungry>
                 <a is-active-page asp-area="" asp-page="/Candies/Search">All candies</a>  
-                <a is-active-page asp-area="" asp-page="/Candy/Add">Add a candy</a>  
+                <a is-active-page asp-area="" asp-page="/Candy/Add" up-cache="true">Add a candy</a>  
                 <a is-active-page asp-area="" asp-page="/Privacy">Privacy</a>
                 <a is-active-page asp-area="" asp-page="/BrokenPage">Broken page</a>
             </nav>
         </aside>
 
         <!-- Content -->
-        <section class="content">
+        <section class="content" up-main>
             @RenderBody()
         </section>
     </div>
@@ -53,6 +55,8 @@
     <div id="snackbar">Page was reloaded 😡</div> 
 </main>
 
+    <script src="~/lib/air-datepicker/air-datepicker.js"></script>
+    <script src="~/lib/unpoly/unpoly.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
